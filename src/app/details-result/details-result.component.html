@@ -1,0 +1,85 @@
+<app-search></app-search>
+<!-- dados da cidade e data -->
+<div class="align-self-center col-12" style="margin-top: 80px;">
+  <div class="row justify-content-center" style="margin-bottom: 0px; font-weight: bold;">
+    Weather in {{weather2.name}}, {{weather2.sys.country}}
+  </div>
+  <div class="row justify-content-center">
+    <div class="text-black-50" style="list-style: none; font-size: 8px;">
+      {{weather2.dt | date:'hh:mm MMMM d'}}
+    </div>
+  </div>
+</div>
+<!-- info climaticas da cidade -->
+<div class="align-self-center col-12">
+  <div class="row  justify-content-center">
+    <div class="card col-8" style="margin-bottom: 2%;">
+      <div class="row" style="margin-top: 5%;">
+        <div class="card col-5 cardGrau">
+          <div class="card cards justify-content-center">
+            <p class="card-text grau" style="width: 100px;">{{weather2.main.temp}}º</p>
+          </div>
+          <div class="card-body" style="padding:  0px 0px 0px 20px;">
+            <ul>
+              <li style="list-style: none;">
+                <img style="width: 80px;height: 80px;" src="http://openweathermap.org/img/w/{{weather2.weather[0].icon }}.png" alt="Icon depicting current weather" />
+              </li>
+              <li class="text-black-50" style="list-style: none; font-size: 14px;">
+                {{weather2.weather[0].description }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- table info details -->
+        <div class="container col-6">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">Máx</th>
+                <td class="text-danger">{{weather2.main.temp_max}}º</td>
+              </tr>
+              <tr>
+                <th scope="row">Min</th>
+                <td class="text-primary">{{weather2.main.temp_min}}º</td>
+              </tr>
+              <tr>
+                <th>Sunrise</th>
+                <td>{{weather2.sys.sunrise | date:'hh:mm a'}}</td>
+              </tr>
+              <tr>
+                <th>Sunset</th>
+                <td>{{weather2.sys.sunset | date:'hh:mm a'}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Previsão dos proximos 5 dias -->
+      <div class="align-self-center col-12">
+        <div class="row ">
+          <h3 class="-day-weather-foreca">5 day weather forecast </h3>
+          <h4 class="every-3-hours"> every 3 hours</h4>
+        </div>
+      </div>
+      <!-- Card com info dos proximos 5 dias -->
+      <div style="margin-bottom: 2%;">
+        <table class="table table-borderless" style="margin-bottom: 0%;" *ngFor="let weather of weather.list">
+          <td>
+            <ul>
+              <li style="list-style: none; font-size: 12px;font-weight: bold;">
+                {{weather.dt_txt | date:'EEEE d MMMM'}}
+              </li>
+              <li class="text-black-50" style="list-style: none; font-size: 8px;">
+                {{weather.dt_txt | date:'hh:mm a'}}
+              </li>
+            </ul>
+          </td>
+          <img src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png" alt="..." />
+          <td class="text-black-50" style="font-size: 12px;">{{weather.weather[0].description}}</td>
+          <td class="text-danger">{{weather.main.temp_max}}º</td>
+          <td class="text-primary">{{weather.main.temp_min}}º</td>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

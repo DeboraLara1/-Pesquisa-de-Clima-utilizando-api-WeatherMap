@@ -1,0 +1,21 @@
+<app-nav-bar></app-nav-bar>
+<!-- Busca por cidade -->
+<div class="jumbotron bg-primary text-white col-12" style="margin-bottom: -8%;">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <h1 class="display-8">weather in your city</h1>
+    </div>
+    <div class="row justify-content-md-center">
+      <form class="form-inline pesquisa" (submit)="submitLocation(cityName)">
+        <div class="row">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Your city name" #cityName aria-label="Input group example" aria-describedby="btnGroupAddon2">
+            <div class="input-group-prepend">
+              <button type="submit" class="input-group-text" id="btnGroupAddon2" #cityName><i class="bi bi-search"></i></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
