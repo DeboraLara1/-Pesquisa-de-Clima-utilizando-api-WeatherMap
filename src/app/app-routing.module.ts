@@ -6,14 +6,17 @@ import { DetailsResultComponent } from './details-result/details-result.componen
 
 
 const routes: Routes = [{
-  path: "search", component: SearchComponent},{
-  path: "search/:cityName", component: ResultadoTempoComponent},{
-  path: "search/details/:id", component: DetailsResultComponent}
+  path: "", component: SearchComponent
+}, {
+  //   path: "search/:cityName", component: ResultadoTempoComponent
+  // }, {
+  path: "details/:id/:name", component: DetailsResultComponent
+}
 
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

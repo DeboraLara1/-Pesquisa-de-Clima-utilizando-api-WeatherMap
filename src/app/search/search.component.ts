@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WeatherService } from '../service/weather.service';
 import { ActivatedRoute } from '@angular/router';
+import { DetalhesSharedService } from '../service/detalhes-shared.service';
 
 @Component({
   selector: 'app-search',
@@ -10,20 +11,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  location = { cityName: 'Curitiba' };
+  location = { cityName: '' };
   weather = undefined;
-  teste: any =  []
-  constructor(private route: ActivatedRoute, private weatherService: WeatherService, 
-    private router:Router) { }
+  teste: any = []
+  constructor(private route: ActivatedRoute, private weatherService: WeatherService,
+    private router: Router, private DetailsResult: DetalhesSharedService) { }
 
   ngOnInit() {
     this.getFind(this.location.cityName)
     this.getFind(this.teste)
-    console.log(" this.navigate()" , this.navigate());
-    console.log("this.teste" , this.teste);
+    // console.log("this.teste", this.teste);
 
 
-    
+
   }
 
   getFind(cityName: string) {
@@ -31,11 +31,11 @@ export class SearchComponent implements OnInit {
       .getFind(cityName)
       .subscribe(
         res => {
-          console.log("console1",res);
+          console.log("console1", res);
           this.weather = res;
           this.teste = res
-          console.log("this.weather",res);
-          console.log("this.teste",res);
+          // console.log("this.weather", res);
+          // console.log("this.teste", res);
         },
         err => {
           console.log(err);
@@ -43,10 +43,9 @@ export class SearchComponent implements OnInit {
       );
   }
 
-
   submitLocation(cityName: HTMLInputElement) {
-     this.teste = cityName.value.toString()
-    
+    this.teste = cityName.value.toString()
+
     if (cityName.value) {
       this.getFind(cityName.value);
 
@@ -58,16 +57,12 @@ export class SearchComponent implements OnInit {
     return false;
   }
 
-  navigate():void{
-    // this.route.params.subscribe( parametros => {
-    //   if (parametros['cityName']) {
-    //     this.router.navigate( ['/search',this.location.cityName] )
-    //   }
-    // });
-  }
 
-  navigateTodetailTemp():void{
-    console.log(this.location.cityName)
-    this.router.navigate( ['resultTemp/detailTemp',] )
+  navigateTodetailTemp(info: any) {
+    console.log('navigateTodetailTemp', info)
+    this.DetailsResult.setSelected(info)
+
+
+    this.router.navigate(['/details'])
   }
 }

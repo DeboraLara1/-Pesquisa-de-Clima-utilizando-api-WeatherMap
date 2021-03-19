@@ -1,12 +1,12 @@
-<app-search></app-search>
+<!-- <app-search></app-search> -->
 <!-- dados da cidade e data -->
-<div class="align-self-center col-12" style="margin-top: 80px;">
+<div class="align-self-center col-12" style="margin-top: 30px;">
   <div class="row justify-content-center" style="margin-bottom: 0px; font-weight: bold;">
-    Weather in {{weather2.name}}, {{weather2.sys.country}}
+    Weather in {{weather.city.name}}, {{weather.city.country}}
   </div>
   <div class="row justify-content-center">
     <div class="text-black-50" style="list-style: none; font-size: 8px;">
-      {{weather2.dt | date:'hh:mm MMMM d'}}
+      {{weather.city.timezone | date:'hh:mm MMMM d'}}
     </div>
   </div>
 </div>
