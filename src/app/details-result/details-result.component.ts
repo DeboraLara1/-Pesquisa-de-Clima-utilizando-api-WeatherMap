@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DetalhesSharedService } from '../service/detalhes-shared.service';
 import { WeatherService } from '../service/weather.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class DetailsResultComponent implements OnInit {
   weather2 = undefined;
   testeinfo
 
-  constructor(private activevatedRoute: ActivatedRoute, private router: Router, private weatherService: WeatherService, private DetailsResult: DetalhesSharedService) { }
+  constructor(private activevatedRoute: ActivatedRoute, private router: Router, private weatherService: WeatherService) { }
 
   ngOnInit(): void {
     console.log("testeinfo", this.testeinfo)

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { WeatherService } from '../service/weather.service';
 import { ActivatedRoute } from '@angular/router';
-import { DetalhesSharedService } from '../service/detalhes-shared.service';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +14,7 @@ export class SearchComponent implements OnInit {
   weather = undefined;
   teste: any = []
   constructor(private route: ActivatedRoute, private weatherService: WeatherService,
-    private router: Router, private DetailsResult: DetalhesSharedService) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.getFind(this.location.cityName)
@@ -55,14 +54,5 @@ export class SearchComponent implements OnInit {
     }
     cityName.focus();
     return false;
-  }
-
-
-  navigateTodetailTemp(info: any) {
-    console.log('navigateTodetailTemp', info)
-    this.DetailsResult.setSelected(info)
-
-
-    this.router.navigate(['/details'])
   }
 }
