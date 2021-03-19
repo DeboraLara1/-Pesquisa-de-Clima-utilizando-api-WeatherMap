@@ -5,11 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { SearchComponent } from './search/search.component';
-import { ResultadoTempoComponent } from './resultado-tempo/resultado-tempo.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { DetailsResultComponent } from './details-result/details-result.component';
+import { NavBarComponent } from './template/nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -17,7 +16,6 @@ import { DetailsResultComponent } from './details-result/details-result.componen
     AppComponent,
     NavBarComponent,
     SearchComponent,
-    ResultadoTempoComponent,
     DetailsResultComponent,
   ],
   imports: [
